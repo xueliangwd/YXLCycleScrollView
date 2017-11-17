@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F359A51C1FBEBDE800453B9D /* banner3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F359A5191FBEBDE800453B9D /* banner3.jpg */; };
+		F359A51D1FBEBDE800453B9D /* banner2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F359A51A1FBEBDE800453B9D /* banner2.jpg */; };
+		F359A51E1FBEBDE800453B9D /* banner1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F359A51B1FBEBDE800453B9D /* banner1.jpg */; };
 		F3F6F1481FBD911400D1F160 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F6F1471FBD911400D1F160 /* AppDelegate.m */; };
 		F3F6F14B1FBD911400D1F160 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3F6F14A1FBD911400D1F160 /* ViewController.m */; };
 		F3F6F14E1FBD911400D1F160 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F6F14C1FBD911400D1F160 /* Main.storyboard */; };
@@ -28,6 +31,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F359A5191FBEBDE800453B9D /* banner3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner3.jpg; sourceTree = "<group>"; };
+		F359A51A1FBEBDE800453B9D /* banner2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner2.jpg; sourceTree = "<group>"; };
+		F359A51B1FBEBDE800453B9D /* banner1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = banner1.jpg; sourceTree = "<group>"; };
 		F3F6F1431FBD911400D1F160 /* YXLCycleScrollView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YXLCycleScrollView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F6F1461FBD911400D1F160 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F3F6F1471FBD911400D1F160 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -63,10 +69,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F359A5181FBEBDC900453B9D /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				F359A51B1FBEBDE800453B9D /* banner1.jpg */,
+				F359A51A1FBEBDE800453B9D /* banner2.jpg */,
+				F359A5191FBEBDE800453B9D /* banner3.jpg */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
 		F3F6F13A1FBD911400D1F160 = {
 			isa = PBXGroup;
 			children = (
 				F3F6F1451FBD911400D1F160 /* YXLCycleScrollView */,
+				F359A5181FBEBDC900453B9D /* Source */,
 				F3F6F15E1FBD911400D1F160 /* YXLCycleScrollViewUITests */,
 				F3F6F1441FBD911400D1F160 /* Products */,
 			);
@@ -208,6 +225,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F359A51D1FBEBDE800453B9D /* banner2.jpg in Resources */,
+				F359A51E1FBEBDE800453B9D /* banner1.jpg in Resources */,
+				F359A51C1FBEBDE800453B9D /* banner3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
