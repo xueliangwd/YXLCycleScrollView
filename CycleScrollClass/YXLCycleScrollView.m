@@ -39,7 +39,9 @@
     _contentScrollView.contentSize = CGSizeMake(temWith*3, temHight);
     _contentScrollView.showsHorizontalScrollIndicator = NO;
     _contentScrollView.showsVerticalScrollIndicator = NO;
+    _contentScrollView.pagingEnabled = YES;
     _contentScrollView.backgroundColor = [UIColor clearColor];
+    _contentScrollView.contentOffset = CGPointMake(_contentScrollView.frame.size.width, 0);
     _contentScrollView.delegate = self;
     [self addSubview:_contentScrollView];
 
@@ -67,13 +69,13 @@
     if (_localImgArray.count == 0) {
         return;
     }
-    _middleImgView.image = _localImgArray[_currentPageIndex];
+    _middleImgView.image = _localImgArray[CALCULINDEX(_currentPageIndex, _localImgArray.count)];
     _leftImgView.image = _localImgArray[CALCULINDEX(_currentPageIndex-1, _localImgArray.count)];
     _rightImgView.image = _localImgArray[CALCULINDEX(_currentPageIndex+1, _localImgArray.count)];
 }
 -(void)startTimer{
     if (![_outoCycleTimer isValid]) {
-        _outoCycleTimer = [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(autoCycleAnimation) userInfo:nil repeats:YES];
+        _outoCycleTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(autoCycleAnimation) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:_outoCycleTimer forMode:NSRunLoopCommonModes];
     }
 }
@@ -86,10 +88,10 @@
         return;
     }
     _currentPageIndex = CALCULINDEX(_currentPageIndex+1, _localImgArray.count);
-    [_contentScrollView setContentOffset:CGPointMake(2*_contentScrollView.frame.size.width, 0) animated:YES];
+    _pageControl.currentPage = _currentPageIndex;
+    [_contentScrollView setContentOffset:CGPointMake(2.0*_contentScrollView.frame.size.width, 0) animated:YES];
     [self configImageView];
-    [_contentScrollView setContentOffset:CGPointMake(_contentScrollView.frame.size.width, 0)];
-
+    _contentScrollView.contentOffset = CGPointMake(0, 0);
 }
 #pragma mark --UIScrollViewDelegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
