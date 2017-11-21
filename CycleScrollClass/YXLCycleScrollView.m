@@ -44,6 +44,8 @@
     _contentScrollView.contentOffset = CGPointMake(_contentScrollView.frame.size.width, 0);
     _contentScrollView.delegate = self;
     [self addSubview:_contentScrollView];
+    UITapGestureRecognizer *bannerTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(bannerClickAction)];
+    [self addGestureRecognizer:bannerTap];
 
     _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, temHight-30, temWith, 30.0)];
     _pageControl.currentPage = _currentPageIndex;
@@ -76,6 +78,11 @@
     [self startTimer];
 }
 #pragma mark PrivateMethod
+-(void)bannerClickAction{
+    if ([self.delegate respondsToSelector:@selector(clickBannerWithIndex:)]) {
+        [self.delegate clickBannerWithIndex:_currentPageIndex];
+    }
+}
 -(void)configImageView{
     if (_localImgArray.count == 0) {
         return;
