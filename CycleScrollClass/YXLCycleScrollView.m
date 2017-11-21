@@ -12,13 +12,9 @@
     UIScrollView *_contentScrollView;
     UIPageControl *_pageControl;
 
-    UIImageView *_leftImgView;
-    UIImageView *_middleImgView;
-    UIImageView *_rightImgView;
-
     NSInteger _currentPageIndex;
-
     NSTimer *_outoCycleTimer;
+    NSArray *_imageViewsArray;
 }
 @end
 
@@ -50,13 +46,13 @@
     _pageControl = [[UIPageControl alloc]initWithFrame:CGRectMake(0, temHight-30, temWith, 30.0)];
     _pageControl.currentPage = _currentPageIndex;
     [self addSubview:_pageControl];
-
-    _leftImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0,0, temWith, temHight)];
-    _middleImgView = [[UIImageView alloc]initWithFrame:CGRectMake(temWith, 0, temWith, temHight)];
-    _rightImgView = [[UIImageView alloc]initWithFrame:CGRectMake(temWith*2, 0, temWith, temHight)];
-    [_contentScrollView addSubview:_leftImgView];
-    [_contentScrollView addSubview:_middleImgView];
-    [_contentScrollView addSubview:_rightImgView];
+    NSMutableArray *temArr = [NSMutableArray array];
+    for (int i=0; i<3; i++) {
+        UIImageView* imgView = [[UIImageView alloc]initWithFrame:CGRectMake(temWith*i,0, temWith, temHight)];
+        [_contentScrollView addSubview:imgView];
+        [temArr addObject:imgView];
+    }
+    _imageViewsArray = [temArr copy];
 }
 #pragma mark AddWillAppear
 -(void)addVCWillAppear{
@@ -87,9 +83,10 @@
     if (_localImgArray.count == 0) {
         return;
     }
-    _middleImgView.image = _localImgArray[CALCULINDEX(_currentPageIndex, _localImgArray.count)];
-    _leftImgView.image = _localImgArray[CALCULINDEX(_currentPageIndex-1, _localImgArray.count)];
-    _rightImgView.image = _localImgArray[CALCULINDEX(_currentPageIndex+1, _localImgArray.count)];
+    for (int i=0;i<3;i++) {
+        UIImageView *imageView = _imageViewsArray[i];
+        imageView.image = _localImgArray[CALCULINDEX(_currentPageIndex+i-1, _localImgArray.count)];
+    }
 }
 -(void)startTimer{
     if (![_outoCycleTimer isValid]) {

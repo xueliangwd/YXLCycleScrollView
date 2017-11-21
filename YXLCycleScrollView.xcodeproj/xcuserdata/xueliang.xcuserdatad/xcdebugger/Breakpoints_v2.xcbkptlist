@@ -20,12 +20,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CycleScrollClass/YXLCycleScrollView.m"
-            timestampString = "532836692.765701"
+            timestampString = "532925493.209207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "-addVCWillAppear"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "-configImageView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -36,12 +36,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CycleScrollClass/YXLCycleScrollView.m"
-            timestampString = "532836692.766111"
+            timestampString = "532925493.209811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "-autoCycleAnimation"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "-scrollViewDidEndDecelerating:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

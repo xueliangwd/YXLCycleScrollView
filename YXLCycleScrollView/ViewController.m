@@ -8,18 +8,19 @@
 
 #import "ViewController.h"
 #import "YXLCycleScrollView.h"
-@interface ViewController ()
-
+@interface ViewController ()<YXLCycleScrollViewDelegate>{
+    YXLCycleScrollView * scr;
+}
 @end
 
 @implementation ViewController
 -(void)viewWillAppear:(BOOL)animated{
-    
+    [scr addVCWillAppear];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    YXLCycleScrollView * scr = [[YXLCycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200.0)];
+    scr = [[YXLCycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200.0)];
     scr.localImgArray = @[[UIImage imageNamed:@"banner1.jpg"],[UIImage imageNamed:@"banner2.jpg"],[UIImage imageNamed:@"banner3.jpg"]];
     [self.view addSubview:scr];
 }
@@ -29,6 +30,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
+#pragma mark CycleDelegate
+-(void)clickBannerWithIndex:(NSInteger)index{
+    NSLog(@"click index is %ld",index);
+}
 @end
