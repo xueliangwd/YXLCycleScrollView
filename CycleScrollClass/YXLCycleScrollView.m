@@ -56,7 +56,18 @@
     [_contentScrollView addSubview:_middleImgView];
     [_contentScrollView addSubview:_rightImgView];
 }
-
+#pragma mark AddWillAppear
+-(void)addVCWillAppear{
+    //处理 轮播出现半屏问题 在VC willAppear处调用
+    int offSetX = _contentScrollView.contentOffset.x;
+    int width = _contentScrollView.frame.size.width;
+    if (offSetX%width != 0) {
+        [self stopTimer];
+        [self configImageView];
+        _contentScrollView.contentOffset = CGPointMake(width, 0.0);
+        [self startTimer];
+    }
+}
 #pragma mark SetterMethods
 -(void)setLocalImgArray:(NSArray *)localImgArray{
     _localImgArray = [localImgArray copy];
@@ -76,6 +87,7 @@
 -(void)startTimer{
     if (![_outoCycleTimer isValid]) {
         _outoCycleTimer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(autoCycleAnimation) userInfo:nil repeats:YES];
+        //加到mainRunloop 防止timer失效
         [[NSRunLoop mainRunLoop] addTimer:_outoCycleTimer forMode:NSRunLoopCommonModes];
     }
 }
@@ -90,8 +102,9 @@
     _currentPageIndex = CALCULINDEX(_currentPageIndex+1, _localImgArray.count);
     _pageControl.currentPage = _currentPageIndex;
     [_contentScrollView setContentOffset:CGPointMake(2.0*_contentScrollView.frame.size.width, 0) animated:YES];
-    [self configImageView];
-    _contentScrollView.contentOffset = CGPointMake(0, 0);
+    //该处重置位置，也可实现无限自动轮播，但页面切换后会出现错乱问题
+//    [self configImageView];
+//    _contentScrollView.contentOffset = CGPointMake(0, 0);
 }
 #pragma mark --UIScrollViewDelegate
 -(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
@@ -117,5 +130,9 @@
     [self configImageView];
     [_contentScrollView setContentOffset:CGPointMake(_contentScrollView.frame.size.width, 0)];
 }
-
+-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    //自动滚动动画结束 重置位置
+    [self configImageView];
+    _contentScrollView.contentOffset = CGPointMake(_contentScrollView.frame.size.width, 0);
+}
 @end
