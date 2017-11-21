@@ -21,6 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     scr = [[YXLCycleScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 200.0)];
+    scr.delegate = self;
     scr.localImgArray = @[[UIImage imageNamed:@"banner1.jpg"],[UIImage imageNamed:@"banner2.jpg"],[UIImage imageNamed:@"banner3.jpg"]];
     [self.view addSubview:scr];
 }
