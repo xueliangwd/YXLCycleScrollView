@@ -7,7 +7,7 @@ YXLCycleScrollView
 
 
 ## Example
--  头文件引用'' #import "YXLCycleScrollView.h" ''
+-  头文件引用` #import "YXLCycleScrollView.h" `
 
 ```
 
